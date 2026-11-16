@@ -10,6 +10,9 @@ import me.eigenraven.lwjgl3ify.core.Config;
 public enum Mixins implements IMixins {
 
     // spotless:off
+    CLIENT_BLOCK_LIGHT(
+        new MixinBuilder("Complete received block lighting in all dimensions")
+            .addClientMixins("game.MixinChunkLightChecks")),
     FORGE_JAVA9(
         new MixinBuilder("FML Java 9+ compatibility patch")
             .addCommonMixins(
