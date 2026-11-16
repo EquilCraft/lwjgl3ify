@@ -32,6 +32,11 @@ import me.eigenraven.lwjgl3ify.core.Config;
 
 public class Sys {
 
+    static {
+        // Timer calls can load SDL before initialize() is called.
+        SdlLibrary.configure();
+    }
+
     static private void firstTimeInit() {
         Configuration.OPENGL_EXPLICIT_INIT.set(true);
         Configuration.HARFBUZZ_LIBRARY_NAME.set("freetype");
