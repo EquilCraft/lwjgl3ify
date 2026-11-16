@@ -70,9 +70,9 @@ public class Sys {
                 }
             }
 
-            if (currentPlatform == Platform.LINUX) {
-                SDL_SetHint(SDL_HINT_VIDEO_FORCE_EGL, "1");
-            }
+            // Let SDL choose the native GL backend (GLX on X11, EGL on Wayland).
+            // Forcing EGL on X11 can select an incompatible window visual on NVIDIA.
+            // SDL_VIDEO_FORCE_EGL remains available as an explicit user override.
 
             if (!SDL_Init(
                 SDL_INIT_VIDEO | SDL_INIT_EVENTS
